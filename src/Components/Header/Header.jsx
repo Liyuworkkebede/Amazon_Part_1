@@ -1,8 +1,10 @@
 import React from 'react'
 import classes from "./Header.module.css"
+import LowerHeader from "./LowerHeader";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
+
 function Header() {
   return (
     <>
@@ -62,6 +64,7 @@ function Header() {
           </div>
         </div>
       </section>
+      <LowerHeader />
     </>
   );
 }
