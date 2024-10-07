@@ -1,20 +1,33 @@
-import React from "react"
-import Header from "./Components/Header/Header"
-import Carousel from "./Components/Carousel/Carousel"
-import Catagory from "./Components/Catagory/Catagory"
-import Product from "./Components/Product/Product"
+import React, { useContext, useEffect } from "react"
+
 import Router from "./Router"
+import { DataContext } from "./Components/DataProvider/DataProvider";
+import { Type } from "./Utility/action.type";
+import { auth } from "./Utility/FireBase";
 
 
 
 function App() {
+  const [{user}, dispatch] = useContext(DataContext);
+  useEffect(()=>{
+    auth.onAuthStateChanged((authUser)=>{
+      if(authUser){
+        dispatch({
+          type:Type.SET_USER,
+          user:authUser,
+        });
+      }else{
+        dispatch({
+          type:Type.SET_USER,
+          user:null,
+        });
+      }
+    });
+  },[]);
  
   return (
     <>
-     {/* <Header />
-    <Carousel/>
-    <Catagory/>
-    <Product/> */}
+     
     <Router/>
       
     </>

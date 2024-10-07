@@ -17,12 +17,11 @@ function Caraousel() {
           showThumbs={false}
         >
           {img.map((imageLinkItem) => (
-            <img src={imageLinkItem} />
+            <img key={imageLinkItem} src={imageLinkItem} />
           ))}
         </Carousel>
         <div className={classes.hero__img}></div>
       </div>
-      
     </>
   );
 }
